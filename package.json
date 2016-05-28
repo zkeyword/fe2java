@@ -1,0 +1,23 @@
+{
+  "name": "zkeyword",
+  "version": "1.0.0",
+  "description": "blog",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.13.4",
+    "ejs": "*",
+    "mongoose": "*"
+  },
+  "devDependencies": {
+    "freemarker.js": "^1.2.2",
+    "gulp": "*",
+    "gulp-nodemon": "*",
+    "gulp-stylus": "^2.3.1",
+    "stylus": "^0.54.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "zkeyword",
+  "license": "ISC"
+}
