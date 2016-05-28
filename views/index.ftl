@@ -1,0 +1,1 @@
+afsdf ${title} asdfadsf1${detail}1<#include "common.ftl"/>
