@@ -3,6 +3,7 @@ let express = require('express'),
 let path    = require('path');
 	
 let Freemarker = require('freemarker.js');	
+let Mock = require('mockjs')
 
 let fm = new Freemarker({
 	viewRoot: path.join(__dirname, "/views")
@@ -10,7 +11,16 @@ let fm = new Freemarker({
 	
 router.get('/', function(req, res) {
     //res.render('index', { title: 'index' });
-	var data = { "title": 'index', "detail":"1.阿斯蒂芬\n2.生动丰富\n3.但是佛诶感觉\n4.多少分" }
+	var Random = Mock.Random,
+		data   = Mock.mock({
+			'result|10': [{
+				'id': '@integer(60, 1000)',
+				'name': '@cname'
+			}],
+			"title": 
+			'index', "detail":"1.阿斯蒂芬\n2.生动丰富\n3.但是佛诶感觉\n4.多少分",
+			'success': '@integer(0, 1)'
+		});
 
 	var result = fm.renderSync('index.ftl', data);
 	res.type('html');
