@@ -6,10 +6,13 @@
   "dependencies": {
     "express": "^4.13.4",
     "ejs": "*",
-    "mongoose": "*"
+    "mongoose": "*",
+	"express-session": "~1.9.3",
+	"body-parser": "~1.10.0",
+	"multer": "~0.1.6",
+	"freemarker.js": "^1.2.2"
   },
   "devDependencies": {
-    "freemarker.js": "^1.2.2",
     "gulp": "*",
     "gulp-nodemon": "*",
     "gulp-stylus": "^2.3.1",
