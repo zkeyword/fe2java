@@ -1,31 +1,67 @@
-let express = require('express');
-let path    = require('path');
-//let ejs     = require('ejs');
+const fs           = require('fs');
+const path         = require('path');
+const express      = require('express');
+const app          = express();
+//const ejs          = require('ejs');
+const favicon      = require('serve-favicon');
+const logger       = require('morgan');
+const bodyParser   = require('body-parser');
+const cookieParser = require('cookie-parser');
+const session      = require('express-session')
+const compression  = require('compression');
 
-let app     = express();
-let router  = require('./router.js');
+//const server       = require('http').createServer(app);
 
-let bodyParser = require('body-parser');
-let multer = require('multer');
-let session = require('express-session');
+//console.log( process.env.NODE_ENV  )
 
+/* 监听端口并启用 */
+app.listen(3000, function () {
+  console.log('Server listening at port %d', 3000);
+});
 
+/* 关闭x-powered-by */
+app.disable('x-powered-by');
 
-let mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1/test');
-let Schema = mongoose.Schema
+/* gzip */ 
+app.use(compression());
 
-
-//app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine', 'html');
-//app.engine('.html', ejs.__express);
-
+/* post参数的解析 */ 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(multer());
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(router);
+// cookie session
+app.use(cookieParser());
+app.use(session({
+    secret:'secret',
+    cookie:{
+        maxAge:1000*60*30
+    }
+}));
+
+/* 日志 */
+app.use(logger('dev'));
+app.use(logger({stream: fs.createWriteStream('log/access.log', {flags: 'a'}) }));
+
+/* 设定静态文件目录 */
+app.use(express.static(path.join(__dirname, '/public/static')));
+app.use(favicon(__dirname + '/public/favicon.ico'));
+
+/* 设置模板引擎 */
+// global.fm = new Freemarker({
+	// viewRoot: path.join(__dirname, "app/views")
+// });
+// app.set('views', path.join(__dirname, 'app/views'));
+// app.set('view engine', 'html');
+// app.engine('.html', ejs.__express);
+
+/* 添加路由 */
+require('./app/router')(app);
 
 
+// 数据库
+require('./app/db');
+//var _ = require('lodash');
 
-app.listen(3000);
+app.locals.CDN = function(str){
+	return 'aaa' + str;
+}

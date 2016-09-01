@@ -1,27 +1,47 @@
 {
-  "name": "zkeyword",
-  "version": "1.0.0",
-  "description": "blog",
-  "main": "index.js",
-  "dependencies": {
-    "express": "^4.13.4",
-    "ejs": "*",
-    "mongoose": "*",
-	"express-session": "~1.9.3",
-	"body-parser": "~1.10.0",
-	"multer": "~0.1.6",
-	"freemarker.js": "^1.2.2"
+  "name": "fe2java",
+  "version": "0.0.1",
+  "description": "fe2java",
+  "main": " ",
+  "scripts": {
+    "build": "gulp build",
+    "macDev": "NODE_ENV=development && nodemon app.js --config nodemonConfig.json",
+    "dev": "set NODE_ENV=development && nodemon app.js --config nodemonConfig.json"
   },
   "devDependencies": {
+    "autoprefixer": "*",
+    "css-mqpacker": "*",
+    "cssnano": "*",
     "gulp": "*",
-    "gulp-nodemon": "*",
-    "gulp-stylus": "^2.3.1",
-    "stylus": "^0.54.5",
-    "mockjs": "*"
+    "gulp-base64": "^0.1.3",
+    "gulp-cssurl": "*",
+    "gulp-less": "*",
+    "gulp-postcss": "*",
+    "gulp-replace": "^0.5.4",
+    "gulp-uglify": "^2.0.0",
+    "html-minifier": "^3.0.2",
+    "less-plugin-functions": "*",
+    "nodemon": "^1.10.2",
+    "postcss-pxtorem": "*",
+    "pump": "^1.0.1"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "zkeyword",
-  "license": "ISC"
+  "dependencies": {
+    "body-parser": "*",
+    "compression": "^1.6.2",
+    "cookie-parser": "^1.4.3",
+    "csurf": "^1.9.0",
+    "ejs": "^2.5.1",
+    "express": "^4.14.0",
+    "express-session": "^1.14.0",
+    "formidable": "^1.0.17",
+    "freemarker.js": "^1.2.2",
+    "lodash": "^4.15.0",
+    "mkdirp": "*",
+    "mongoose": "^4.5.10",
+    "morgan": "*",
+    "request": "^2.74.0",
+    "serve-favicon": "*",
+    "shelljs": "^0.7.3",
+    "xss": "^0.2.13"
+  }
 }

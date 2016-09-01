@@ -1,5 +1,7 @@
-/.idea
-*.iml
 /node_modules
+/log
+/public
 *.js.map
 *.css.map
+*.iml
+.idea
