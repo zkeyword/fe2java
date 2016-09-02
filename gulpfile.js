@@ -8,8 +8,7 @@ var gulp         = require("gulp"),
 		require('autoprefixer'),
 		require('css-mqpacker'),
 		require('postcss-pxtorem')({
-			//rootValue: 33.75 * 3,// 1080/3 1080的设计稿 flexible.js
-			rootValue: 3.375 * 100,// 1080/3 1080的设计稿 autoFize.js
+			rootValue: 33.75 * 3,// 1080/3 1080的设计稿 flexible.js
 			unitPrecision: 5,
 			propWhiteList:[],
 			selectorBlackList: [],
@@ -29,7 +28,6 @@ var gulp         = require("gulp"),
 	bulid        = {
 		views: 'public/WEB-INF/templates/',
 		static: 'public/static/',
-		//bulid: '../jia-mobile-web/mobile-web/src/main/webapp/'
 		bulid: 'test/'
 	}
 	
