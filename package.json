@@ -4,9 +4,11 @@
   "description": "fe2java",
   "main": " ",
   "scripts": {
+	"remove":"rimraf node_modules",
+	"clear":"rimraf node_modules",
     "build": "gulp build",
-    "macDev": "NODE_ENV=development && nodemon app.js --config nodemonConfig.json",
-    "dev": "set NODE_ENV=development && nodemon app.js --config nodemonConfig.json"
+    "macDev": "NODE_ENV=development && nodemon bin/www --config bin/nodemonConfig.json",
+    "dev": "set NODE_ENV=development && nodemon bin/www --config bin/nodemonConfig.json"
   },
   "devDependencies": {
     "autoprefixer": "*",
@@ -27,6 +29,7 @@
   },
   "dependencies": {
     "body-parser": "*",
+    "ccap": "^0.6.10",
     "compression": "^1.6.2",
     "cookie-parser": "^1.4.3",
     "csurf": "^1.9.0",

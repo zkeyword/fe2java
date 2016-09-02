@@ -10,43 +10,34 @@ const cookieParser = require('cookie-parser');
 const session      = require('express-session')
 const compression  = require('compression');
 
-//const server       = require('http').createServer(app);
-
-//console.log( process.env.NODE_ENV  )
-
-/* ¼àÌı¶Ë¿Ú²¢ÆôÓÃ */
-app.listen(3000, function () {
-  console.log('Server listening at port %d', 3000);
-});
-
-/* ¹Ø±Õx-powered-by */
+/* å…³é—­x-powered-by */
 app.disable('x-powered-by');
 
 /* gzip */ 
 app.use(compression());
 
-/* post²ÎÊıµÄ½âÎö */ 
+/* postå‚æ•°çš„è§£æ */ 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // cookie session
 app.use(cookieParser());
 app.use(session({
-    secret:'secret',
-    cookie:{
-        maxAge:1000*60*30
-    }
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
 }));
 
-/* ÈÕÖ¾ */
+/* æ—¥å¿— */
 app.use(logger('dev'));
-app.use(logger({stream: fs.createWriteStream('log/access.log', {flags: 'a'}) }));
+app.use(logger('combined', {stream: fs.createWriteStream(path.join(__dirname, '/log/access.log'), {flags: 'a'}) }));
+// æ—¥å¿—åˆ†å‰² https://github.com/expressjs/morgan
 
-/* Éè¶¨¾²Ì¬ÎÄ¼şÄ¿Â¼ */
+/* è®¾å®šé™æ€æ–‡ä»¶ç›®å½• */
 app.use(express.static(path.join(__dirname, '/public/static')));
 app.use(favicon(__dirname + '/public/favicon.ico'));
 
-/* ÉèÖÃÄ£°åÒıÇæ */
+/* è®¾ç½®æ¨¡æ¿å¼•æ“ */
 // global.fm = new Freemarker({
 	// viewRoot: path.join(__dirname, "app/views")
 // });
@@ -54,14 +45,16 @@ app.use(favicon(__dirname + '/public/favicon.ico'));
 // app.set('view engine', 'html');
 // app.engine('.html', ejs.__express);
 
-/* Ìí¼ÓÂ·ÓÉ */
+/* æ·»åŠ è·¯ç”± */
 require('./app/router')(app);
 
 
-// Êı¾İ¿â
+// æ•°æ®åº“
 require('./app/db');
 //var _ = require('lodash');
 
 app.locals.CDN = function(str){
 	return 'aaa' + str;
 }
+
+module.exports = app;

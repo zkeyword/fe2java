@@ -12,9 +12,10 @@
 		<input type="text" name="email" id="email" />
 		<input type="hidden" name="_csrf" value="${token}" />
 		<input type="submit" value="提交"/>
-		
+		<img src="/register/captcha" />
 		${aa!}
 	</form>
+	
 	<script src="/js/mobile/kefuCommon.js"></script>
 	<script type="text/javascript">
 	function join_favorite(siteUrl, siteName){  

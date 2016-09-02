@@ -1,15 +1,11 @@
 const express  = require('express'),
 	  router   = express.Router(),
-	  fm       = global.fm;
+	  base     = require('./base');
 
 router.get('/',function(req,res){
-	let result,
-		data = { title: 'index', appContext: 121 }
+	let data = { title: 'index', appContext: 121 }
 
-	result = fm.renderSync('error.ftl', data);
-	res.type('html');
-	res.send(result);
+	base.render(req, res, 'error.ftl', data);
 });
-
 
 module.exports = router;

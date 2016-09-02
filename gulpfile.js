@@ -65,7 +65,7 @@ gulp.task('styles', ['styles:less'], function () {
 
 /* 发布 */
 let replace = require('gulp-replace');
-let tool    = require('./tool')
+let tool    = require('./bin/tool')
 gulp.task('bulid', function () {
 	
     gulp.src(dev.static)

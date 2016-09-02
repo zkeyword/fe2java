@@ -24,7 +24,9 @@ module.exports = function (opt) {
             }
 
         } catch (e) {
+
             console.error(e);
+            
         }
 
         this.emit('data', file);
