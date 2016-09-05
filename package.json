@@ -4,8 +4,8 @@
   "description": "fe2java",
   "main": " ",
   "scripts": {
-	"remove":"rimraf node_modules",
-	"clear":"rimraf node_modules",
+    "remove": "rimraf node_modules",
+    "clear": "rimraf node_modules",
     "build": "gulp build",
     "macDev": "NODE_ENV=development && nodemon bin/www --config bin/nodemonConfig.json",
     "dev": "set NODE_ENV=development && nodemon bin/www --config bin/nodemonConfig.json"
@@ -38,6 +38,7 @@
     "express-session": "^1.14.0",
     "formidable": "^1.0.17",
     "freemarker.js": "^1.2.2",
+    "images": "^3.0.0",
     "lodash": "^4.15.0",
     "mkdirp": "*",
     "mongoose": "^4.5.10",

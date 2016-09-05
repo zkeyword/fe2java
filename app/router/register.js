@@ -12,7 +12,7 @@ router.get('/', csrf, (req, res) => {
 		console.log(data)
 	});
 	
-	base.render(req, res, 'register.ftl', data);
+	base.render(req, res, 'register.html', data);
 });
 
 router.post('/', csrf, (req, res) => {
@@ -120,16 +120,22 @@ router.get('/gm', csrf, (req, res) => {
 
 
 router.get('/images', csrf, (req, res) => {
-	
+	var path = require('path'), 
+		dir  = path.join(__dirname, '../../tmp/')
+
 	var images = require("images");
 
-		images("/static/img/kf.png", 50, 50, 50, 50)                     //Load image from file 
+		var s = images( dir + '1.png', 50, 50, 50, 50)                     //Load image from file 
 												//加载图像文件
-			//.size(400)                          //Geometric scaling the image to 400 pixels width
+			.size(400)                          //Geometric scaling the image to 400 pixels width
 												//等比缩放图像到400像素宽
 			//.draw(images("logo.png"), 10, 10)   //Drawn logo at coordinates (10,10)
 												//在(10,10)处绘制Logo
-			.save("/test/kf.png");
+			.save( dir + '2.png' );
+
+		console.log(s)
+
+		res.end();
 	
 });
 

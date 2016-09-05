@@ -6,6 +6,8 @@ let base     = require('./base');
 
 module.exports = app => {
 	
+	app.use(base.leech());
+
 	app.use(base.compress());
 	
 	app.use('/', home);

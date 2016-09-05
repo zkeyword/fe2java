@@ -1,14 +1,12 @@
-const express  = require('express'),
-	  router   = express.Router(),
-	  fm       = global.fm;
+const express  = require('express');
+
+let router = express.Router(),
+	base   = require('./base');
 
 router.get('/', (req,res) => {
-	let result,
-		data = { title: 'index', appContext: 121 }
+	let data = { title: 'index', appContext: 121 }
 
-	result = fm.renderSync('login.ftl', data);
-	res.type('html');
-	res.send(result);
+	base.render(req, res, 'home.html', data);
 });
 
 router.post('/', (req, res) => {

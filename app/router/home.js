@@ -1,11 +1,15 @@
-const express  = require('express'),
-	  router   = express.Router(),
-	  base     = require('./base');
+const express  = require('express');
 
-router.get('/',function(req,res){
+let router = express.Router(),
+	base   = require('./base');
+
+router.get('/', (req,res) => {
 	let data = { title: 'index', appContext: 121 }
 
-	base.render(req, res, 'error.ftl', data);
+
+	console.log(req.headers)
+
+	base.render(req, res, 'home.html', data);
 });
 
 module.exports = router;

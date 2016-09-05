@@ -2,7 +2,7 @@ const fs           = require('fs');
 const path         = require('path');
 const express      = require('express');
 const app          = express();
-//const ejs          = require('ejs');
+const ejs          = require('ejs');
 const favicon      = require('serve-favicon');
 const logger       = require('morgan');
 const bodyParser   = require('body-parser');
@@ -38,12 +38,9 @@ app.use(express.static(path.join(__dirname, '/public/static')));
 app.use(favicon(__dirname + '/public/favicon.ico'));
 
 /* 设置模板引擎 */
-// global.fm = new Freemarker({
-	// viewRoot: path.join(__dirname, "app/views")
-// });
-// app.set('views', path.join(__dirname, 'app/views'));
-// app.set('view engine', 'html');
-// app.engine('.html', ejs.__express);
+app.set('views', path.join(__dirname, 'app/views'));
+app.set('view engine', 'html');
+app.engine('.html', ejs.__express);
 
 /* 添加路由 */
 require('./app/router')(app);

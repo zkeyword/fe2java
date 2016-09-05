@@ -1,16 +1,14 @@
-let express    = require('express'),
-	router     = express.Router(),
-	fm         = global.fm,
-	formidable = require('formidable'),
-	fs         = require('fs');
+const express    = require('express'),
+	  formidable = require('formidable'),
+	  fs         = require('fs');
+
+let router = express.Router(),
+	base   = require('./base');
 
 router.get('/', (req, res) => {
-	let result,
-		data  = { title: 'index' };
-
-	result = fm.renderSync('upload.ftl', data);
-	res.type('html');
-	res.send(result);
+	let data  = { title: 'index' };
+	
+	base.render('upload.ftl', data);
 });
 
 router.post('/', (req, res) => {
