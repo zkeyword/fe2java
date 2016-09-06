@@ -7,11 +7,14 @@
     "remove": "rimraf node_modules",
     "clear": "rimraf node_modules",
     "build": "gulp build",
-    "macDev": "NODE_ENV=development && nodemon bin/www --config bin/nodemonConfig.json",
-    "dev": "set NODE_ENV=development && nodemon bin/www --config bin/nodemonConfig.json"
+    "test": "mocha",
+    "macDev": "NODE_ENV=development && nodemon ./bin/www --config ./bin/nodemonConfig.json",
+    "dev": "set NODE_ENV=development && nodemon ./bin/www --config ./bin/nodemonConfig.json"
   },
   "devDependencies": {
     "autoprefixer": "*",
+    "cheerio": "^0.22.0",
+    "co": "^4.6.0",
     "css-mqpacker": "*",
     "cssnano": "*",
     "gulp": "*",
@@ -22,10 +25,14 @@
     "gulp-replace": "^0.5.4",
     "gulp-uglify": "^2.0.0",
     "html-minifier": "^3.0.2",
+    "istanbul": "^0.4.5",
     "less-plugin-functions": "*",
+    "mocha": "^3.0.2",
     "nodemon": "^1.10.2",
     "postcss-pxtorem": "*",
-    "pump": "^1.0.1"
+    "pump": "^1.0.1",
+    "should": "^11.1.0",
+    "supertest": "^2.0.0"
   },
   "dependencies": {
     "body-parser": "*",
@@ -38,7 +45,6 @@
     "express-session": "^1.14.0",
     "formidable": "^1.0.17",
     "freemarker.js": "^1.2.2",
-    "images": "^3.0.0",
     "lodash": "^4.15.0",
     "mkdirp": "*",
     "mongoose": "^4.5.10",
